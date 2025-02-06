@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Details</title>
+  <style>
+    body { background-color: #afe5ec; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    /*.container {
+      width: 90%;
+      margin: 20px auto;
+      background-color: rgb(234, 243, 188);
+    }*/
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    /*th {
+       background-color: #ccc;
+    }*/
+  </style>
+</head>
+<body>
+  <h2>Registered Users</h2>
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Hobbies</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        // Fetch stored users from localStorage
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+
+        const tableBody = document.querySelector("#userTable tbody");
+        users.forEach(user => {
+            const row = tableBody.insertRow();
+            row.innerHTML = `
+                <td>${user.name}</td>
+                <td>${user.email}</td>
+                <td>${user.mobile}</td>
+                <td>${user.address}</td>
+                <td>${user.city}</td>
+                <td>${user.hobbies.join(", ")}</td>
+                <td>${user.gender}</td>
+            `;
+        });
+  </script>
+</body>
+</html>

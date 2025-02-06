@@ -1,0 +1,48 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    height: 100vh;
+    background-color: #343a40;
+    color: white;
+    position: fixed;
+    width: 250px;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    font-size: 18px;
+}
+
+.sidebar a:hover {
+    background-color: #495057;
+}
+
+.content {
+    margin-left: 250px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+}
+
+table th, table td {
+    text-align: center;
+}
+
+.logiDiv{
+}

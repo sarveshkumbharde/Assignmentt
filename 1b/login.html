@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+  <style>
+    body { background-color: #afe5ec; font-family: Arial, sans-serif; margin: 0; padding: 0;}
+    .container {
+      width: 300px;
+      margin: 100px auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 5px;
+      background-color: rgb(234, 243, 188);
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      width: 100%;
+      padding: 8px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form id="loginForm" action="registration.html" method="get">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <div id="usernameError" class="error"></div>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <div id="passwordError" class="error"></div>
+
+      <input type="submit" value="Login">
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      let valid = true;
+      
+      
+      const username = document.getElementById('username').value;
+      const usernameRegex = /^[A-Za-z]{1,10}$/;
+      if (!usernameRegex.test(username)) {
+        document.getElementById('usernameError').innerText = "Username must contain only alphabets and be up to 10 characters long.";
+        valid = false;
+      } else {
+        document.getElementById('usernameError').innerText = "";
+      }
+      
+      const password = document.getElementById('password').value;
+      const passwordRegex = /^(?=.*[A-Za-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+      if (!passwordRegex.test(password)) {
+        document.getElementById('passwordError').innerText =
+          "Password must be at least 8 characters long and include at least one digit, one letter, one uppercase letter, and one special symbol.";
+        valid = false;
+      } else {
+        document.getElementById('passwordError').innerText = "";
+      }
+      
+      if (valid) {
+        alert("Login Successful");
+      } else {
+        e.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>
+
