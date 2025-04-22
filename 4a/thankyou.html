@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thank You</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+</head>
+
+<body>
+    <div data-role="page">
+        <div data-role="header">
+            <h1 style="text-align: center;">Thank You</h1>
+        </div>
+        <div role="main" class="ui-content">
+            <p style="text-align: center; font-size: 1.2em;">We have received your message!</p>
+            <div>
+                <strong>Name:</strong> <span id="displayName"></span><br>
+                <strong>Email:</strong> <span id="displayEmail"></span><br>
+                <strong>Message:</strong> <span id="displayMessage"></span>
+            </div>
+            <a href="jquery.html" data-role="button" data-icon="home">Back to Contact Form</a>
+        </div>
+    </div>
+
+    <script>
+        $(document).on('pagecreate', function () {
+            $('#displayName').text(localStorage.getItem('name'));
+            $('#displayEmail').text(localStorage.getItem('email'));
+            $('#displayMessage').text(localStorage.getItem('message'));
+        });
+    </script>
+</body>
+
+</html>

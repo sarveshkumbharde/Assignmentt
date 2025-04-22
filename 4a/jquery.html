@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Form - Assignment 04-A</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+
+        .ui-header {
+            background-color: #4CAF50 !important;
+            color: white !important;
+            text-align: center;
+        }
+
+        .ui-content {
+            padding: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            box-sizing: border-box;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #388e3c;
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            margin-top: 20px;
+            background-color: #ff5722 !important;
+            color: white !important;
+            border: none;
+            font-size: 1.1em;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div data-role="page" id="contactPage">
+        <div data-role="header" data-position="fixed" class="ui-header">
+            <h1>Contact Us</h1>
+        </div>
+
+        <div role="main" class="ui-content">
+            <form id="myForm">
+                <div class="ui-field-contain">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="ui-field-contain">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="ui-field-contain">
+                    <label for="message">Message:</label>
+                    <textarea name="message" id="message" placeholder="Enter your message" required></textarea>
+                </div>
+
+                <input type="submit" value="Submit" class="submit-btn" data-role="button" data-icon="check">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(document).on('pagecreate', '#contactPage', function () {
+            $('#myForm').on('submit', function (event) {
+                event.preventDefault();
+                var name = $('#name').val().trim();
+                var email = $('#email').val().trim();
+                var message = $('#message').val().trim();
+
+                if (!name || !email || !message) {
+                    alert("Please fill out all fields.");
+                    return;
+                }
+
+                localStorage.setItem('name', name);
+                localStorage.setItem('email', email);
+                localStorage.setItem('message', message);
+
+                window.location.href = 'thankyou.html';
+            });
+        });
+    </script>
+</body>
+
+</html>
