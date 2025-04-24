@@ -1,1 +1,1 @@
-# WAD Assignments Repository
+# WAD Assignments
